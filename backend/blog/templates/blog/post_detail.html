@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    
+    <p class="date">
+        Published {{ post.created }} by {{ post.author }}
+    </p>
+
+
+
+    {% with post.comments.count as total_comments %}
+        <h2>
+            {{ total_comments }} comment{{ total_comments|pluralize }}
+        </h2>
+    {% endwith %}
+
+    {% for comment in post.comments.all %}
+        <div class="comment">
+            <p class="info">
+                Comment {{ forloop.counter }} by {{ comment.name }}
+                {{ comment.created }}
+            </p>
+            {{ comment.body|linebreaks }}
+        </div>
+    {% empty %}
+        <p>There are no comments yet.</p>
+    {% endfor %}
+
+    <a href="{% url 'blog:comment_create' post.id %}">
+    <h2>Add a new comment</h2>
+    </a>
+
+
+{% endblock %}

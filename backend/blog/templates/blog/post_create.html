@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %} Posts Create {% endblock %}
+{% block title %} Posts Create {% endblock %}
+{% block content %}
+
+<div id="main" class="post-create">
+   <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+</div>
+
+{% endblock %}

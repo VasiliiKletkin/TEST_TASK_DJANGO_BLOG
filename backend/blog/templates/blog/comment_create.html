@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %} Comment Create {% endblock %}
+{% block title %} Comment Create {% endblock %}
+{% block content %}
+
+<div id="main" class="comment-create">
+   <form method="comment">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %} Posts List {% endblock %}
+{% block title %} Posts List {% endblock %}
+{% block content %}
+
+<div id="main" class="post-list">
+    {% for post in posts %}
+    <br>
+    <h3>
+        <div class="post">
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            <h6>
+                <p class="text-end">{{ post.created }}</p>
+            </h6>
+        </div>
+    </h3>
+    {% endfor %}
+</div>
+
+{% include "pagination.html" with page=posts %}
+{% endblock %}
